@@ -13,7 +13,7 @@ namespace DataAccess
     {
         public async Task<IEnumerable<Alumno>> GetItemsAsync()
         {
-            MySqlConnection connection = base.OpenConnection();
+            MySqlConnection connection = await base.OpenConnection();
             try {
                 IEnumerable<Alumno> AlumnosList = null;
                 if (connection != null)
@@ -39,7 +39,7 @@ namespace DataAccess
 
         public async Task<Alumno> GetItemByIdAsync(int idAlumno)
         {
-            MySqlConnection connection = base.OpenConnection();
+            MySqlConnection connection = await base.OpenConnection();
             try
             {
                 Alumno Alumno = null;
@@ -68,7 +68,7 @@ namespace DataAccess
 
         public async Task<int> UpdateAsync(Alumno alumno)
         {
-            MySqlConnection connection = base.OpenConnection();
+            MySqlConnection connection = await base.OpenConnection();
             try
             {
                 int flag = -1;
@@ -105,7 +105,7 @@ namespace DataAccess
 
         public async Task<int> DeleteAsync(int IdAlumno)
         {
-            MySqlConnection connection = base.OpenConnection();
+            MySqlConnection connection = await base.OpenConnection();
             try
             {
                 int flag = -1;

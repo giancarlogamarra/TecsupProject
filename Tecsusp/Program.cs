@@ -18,13 +18,17 @@ namespace Tecsusp
 
         static async void MainAsync()
         {
-            CursoBL bl = new CursoBL();
-            IEnumerable<Curso> ListAlumnos=await bl.GetItemsAsync();
-            foreach (Curso alumno in ListAlumnos)
-            {
-               Console.WriteLine(alumno);
-            }
+            Alumno a = new Alumno() {
+                Nombre ="Luis TX1",
+                Apellido ="Perez TX",
+                Dni = "44552266",
+                Email = "luis@gmail.com"
+            };
+            Matricula matricula = new Matricula(a,1,DateTime.Now,"admin");
 
+            MatriculaBL bl = new MatriculaBL();
+            bool result = await bl.MatricularAsync(matricula);
+            Console.WriteLine(result);
         }
     }
 }
