@@ -1,10 +1,11 @@
 ﻿using BusinessLayer;
 using DataAccess;
 using Entities;
+using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
- 
+using Dapper;
 
 namespace Tecsusp
 {
@@ -12,23 +13,18 @@ namespace Tecsusp
     {
         static  void Main(string[] args)
         {
-            MainAsync().Wait();
+            MainAsync();
         }
-        static async Task MainAsync()
-        {
-            AlumnoBL bl = new AlumnoBL();
 
-            IEnumerable<Alumno> ListAlumnos=await bl.GetItemsAsync();
-            foreach (Alumno alumno in ListAlumnos)
+        static async void MainAsync()
+        {
+            CursoBL bl = new CursoBL();
+            IEnumerable<Curso> ListAlumnos=await bl.GetItemsAsync();
+            foreach (Curso alumno in ListAlumnos)
             {
                Console.WriteLine(alumno);
             }
 
-       
-            Alumno a = await bl.GetItemByIdAsync(2);
-            a.Nombre = "Nombre cambiado";
-            int flag1 = await bl.Update(a);
-            int flag2 = await bl.Delete(2);
         }
     }
 }

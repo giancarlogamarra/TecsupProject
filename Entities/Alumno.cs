@@ -11,13 +11,12 @@ namespace Entities
             public string Apellido { get; set; }
             public string Dni { get; set; }
             public string Email { get; set; }
+            public int NroMatriculas { get; set; }
 
         public override string ToString()
         {
             return string.Format("ID={0} , NOMBRE={1}, APELLIDO={2}",
                                 this.IdAlumno, this.Nombre, this.Apellido);
         }
-    }
-
-   
+    }   
 }

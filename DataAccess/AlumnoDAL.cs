@@ -18,8 +18,10 @@ namespace DataAccess
                 IEnumerable<Alumno> AlumnosList = null;
                 if (connection != null)
                 {
+                    var parameters = new DynamicParameters();
+                    parameters.Add("@TipoEntidad", 'A');
                     AlumnosList = await connection.QueryAsync<Alumno>(
-                          @"SELECT IdAlumno, Nombre, Apellido, Dni ,Email FROM talumnos");
+                          @"GET_ALUMNOS_OR_CURSOS", parameters,null,null,System.Data.CommandType.StoredProcedure);
                 }
                     return AlumnosList;
                 }
