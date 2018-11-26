@@ -7,7 +7,7 @@ namespace DataAccess
 {
     public class Connection
     {
-        private string MysqlconnectionString = "server = 127.0.0.1; uid = root; pwd=desarroll0;database=tecsupdb";
+        private string MysqlconnectionString = "server = 127.0.0.1; uid = root; pwd=desarroll0;database=tecsupdb;sslmode=none;persistsecurityinfo=True;";
         public MySqlConnection OpenConnection()
         {
             try
@@ -27,6 +27,6 @@ namespace DataAccess
                 return null;
             }
         }
- 
+
     }
 }
