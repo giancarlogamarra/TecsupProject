@@ -8,26 +8,23 @@ namespace DataAccess
 {
     public class Connection
     {
-        private string MysqlconnectionString = "server = 127.0.0.1; uid = root; pwd=desarroll0;database=tecsupdb";
+        private string MysqlconnectionString = "server = 127.0.0.1; uid = root; pwd=desarroll0;database=tecsupdb;sslmode=none;persistsecurityinfo=True;";
         public async Task<MySqlConnection> OpenConnection()
         {
             try
             {
-                MySqlConnection mysqlConnection = new MySqlConnection(this.MysqlconnectionString);
-                
-                    if (mysqlConnection.State == System.Data.ConnectionState.Open)
-                        return mysqlConnection;
-                    else
-                    {
-                        await mysqlConnection.OpenAsync();
-                        return mysqlConnection;
-                    }
-                
+                MySqlConnection mysqlConnection = new MySqlConnection(this.MysqlconnectionString);           
+                if (mysqlConnection.State == System.Data.ConnectionState.Open)
+                    return mysqlConnection;
+                else
+                {
+                    await mysqlConnection.OpenAsync();
+                    return mysqlConnection;
+                }
             }
             catch {
                 return null;
             }
         }
- 
     }
 }

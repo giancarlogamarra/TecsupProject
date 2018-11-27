@@ -17,7 +17,7 @@ namespace DataAccess
 
             MySqlConnection conexion = await base.OpenConnection();
             
-            var transaccion = conexion.BeginTransaction();
+            MySqlTransaction transaccion = conexion.BeginTransaction();
             try
             {
                 if (conexion != null)
@@ -47,7 +47,7 @@ namespace DataAccess
             command.Parameters.AddWithValue("@Email", alumno.Email);
 
             await command.ExecuteNonQueryAsync();
-            long LastId = command.LastInsertedId;
+            long LastId = command.LastInsertedId ;
             return LastId;
         }
 

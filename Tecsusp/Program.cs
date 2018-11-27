@@ -25,7 +25,6 @@ namespace Tecsusp
                 Email = "luis@gmail.com"
             };
             Matricula matricula = new Matricula(a,1,DateTime.Now,"admin");
-
             MatriculaBL bl = new MatriculaBL();
             bool result = await bl.MatricularAsync(matricula);
             Console.WriteLine(result);
