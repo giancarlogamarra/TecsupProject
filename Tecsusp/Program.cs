@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Dapper;
+using Entities.Reportes;
 
 namespace Tecsusp
 {
@@ -18,7 +19,15 @@ namespace Tecsusp
 
         static async void MainAsync()
         {
-            Alumno a = new Alumno() {
+            AlumnoBL bl = new AlumnoBL();
+            IEnumerable<AlumnoResult> Matriculas = await bl.SearchAlumnosAsync();
+            foreach (var item in Matriculas)
+            {
+                Console.WriteLine($"ALUMNO: {item.Nombre} , CURSO MATRICULADO: {item.NombreCurso}");
+            }
+
+
+           /* Alumno a = new Alumno() {
                 Nombre ="Luis TX1",
                 Apellido ="Perez TX",
                 Dni = "44552266",
@@ -27,7 +36,7 @@ namespace Tecsusp
             Matricula matricula = new Matricula(a,1,DateTime.Now,"admin");
             MatriculaBL bl = new MatriculaBL();
             bool result = await bl.MatricularAsync(matricula);
-            Console.WriteLine(result);
+            Console.WriteLine(result);*/
         }
     }
 }

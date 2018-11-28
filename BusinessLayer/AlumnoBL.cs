@@ -1,5 +1,6 @@
 ﻿using DataAccess;
 using Entities;
+using Entities.Reportes;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -8,7 +9,13 @@ namespace BusinessLayer
 {
     public class AlumnoBL  
     {
-       
+
+        public async Task<IEnumerable<AlumnoResult>> SearchAlumnosAsync(string IdAlumno ="")
+        {
+            ReportesDAL dal = new ReportesDAL();
+            return await dal.SearchAlumnosAsync(IdAlumno);
+        }
+
         public async Task<IEnumerable<Alumno>> GetItemsAsync()
         {
             AlumnoDAL dal = new AlumnoDAL();
@@ -32,6 +39,8 @@ namespace BusinessLayer
             AlumnoDAL dal = new AlumnoDAL();
             return await dal.UpdateAsync(entity);
         }
+
+
     }
 }
 
